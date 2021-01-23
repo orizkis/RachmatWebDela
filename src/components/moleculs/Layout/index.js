@@ -24,7 +24,7 @@ import {
 } from "@material-ui/icons";
 import clsx from "clsx";
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -99,10 +99,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Layout(props) {
+  let location = useLocation();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  let location = useLocation();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -173,6 +173,7 @@ function Layout(props) {
             );
           })}
         </List>
+        <Divider />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />

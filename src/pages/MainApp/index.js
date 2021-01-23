@@ -1,6 +1,9 @@
 import React from "react";
-import { Layout } from "../../components";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Layout, PrivateRoute } from "../../components";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { ExitToApp } from "@material-ui/icons";
+import { IconButton } from "@material-ui/core";
 import {
   Customers,
   Dashboard,
@@ -10,26 +13,42 @@ import {
 } from "../../pages";
 
 const MainApp = () => {
+  let history = useHistory();
   return (
     <>
+      <IconButton
+        style={{
+          color: "#FFFF",
+          zIndex: 2000,
+          position: "absolute",
+          top: "8px",
+          right: "10px",
+        }}
+        onClick={() => {
+          localStorage.removeItem("token");
+          history.push("login");
+        }}
+      >
+        <ExitToApp />
+      </IconButton>
       <Router>
         <Layout>
           <Switch>
-            <Route path="/" exact>
+            <PrivateRoute path="/" exact>
               <Dashboard />
-            </Route>
-            <Route path="/supplier">
+            </PrivateRoute>
+            <PrivateRoute path="/supplier">
               <Supplier />
-            </Route>
-            <Route path="/customers">
+            </PrivateRoute>
+            <PrivateRoute path="/customers">
               <Customers />
-            </Route>
-            <Route path="/Pembelian">
+            </PrivateRoute>
+            <PrivateRoute path="/pembelian">
               <Pembelian />
-            </Route>
-            <Route path="/Penjualan">
+            </PrivateRoute>
+            <PrivateRoute path="/penjualan">
               <Penjualan />
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Layout>
       </Router>
