@@ -4,13 +4,7 @@ import { Layout, PrivateRoute } from "../../components";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { ExitToApp } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
-import {
-  Customers,
-  Dashboard,
-  Pembelian,
-  Penjualan,
-  Supplier,
-} from "../../pages";
+import { Dashboard } from "../../pages";
 
 const MainApp = () => {
   let history = useHistory();
@@ -37,7 +31,7 @@ const MainApp = () => {
             <PrivateRoute path="/" exact>
               <Dashboard />
             </PrivateRoute>
-            <PrivateRoute path="/supplier">
+            {/* <PrivateRoute path="/supplier">
               <Supplier />
             </PrivateRoute>
             <PrivateRoute path="/customers">
@@ -48,7 +42,7 @@ const MainApp = () => {
             </PrivateRoute>
             <PrivateRoute path="/penjualan">
               <Penjualan />
-            </PrivateRoute>
+            </PrivateRoute> */}
           </Switch>
         </Layout>
       </Router>

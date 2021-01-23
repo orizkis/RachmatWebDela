@@ -28,13 +28,7 @@ import { NavLink, useLocation, useHistory } from "react-router-dom";
 
 const drawerWidth = 240;
 
-const dataMenu = [
-  { path: "/", text: "Home", icon: <Home /> },
-  { path: "/penjualan", text: "Penjualan", icon: <LocalMall /> },
-  { path: "/pembelian", text: "Pembelian", icon: <ShoppingCart /> },
-  { path: "/customers", text: "Customers", icon: <PeopleAlt /> },
-  { path: "/supplier", text: "Supplier", icon: <Storefront /> },
-];
+const dataMenu = [{ path: "/", text: "Home", icon: <Home /> }];
 
 const useStyles = makeStyles((theme) => ({
   root: {
