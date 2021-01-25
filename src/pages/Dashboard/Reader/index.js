@@ -67,7 +67,6 @@ const Row = ({ data }) => {
 
 const Reader = ({ data }) => {
   const classes = useStyles();
-  const [state, setState] = useState();
 
   return (
     <TableContainer component={Paper}>

@@ -12,14 +12,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import {
-  ChevronLeft,
-  ChevronRight,
-  EventNote,
-  Home,
-  ListAlt,
-  Menu,
-} from "@material-ui/icons";
+import { ChevronLeft, ChevronRight, Home, Menu } from "@material-ui/icons";
 import clsx from "clsx";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";

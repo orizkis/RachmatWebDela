@@ -19,7 +19,6 @@ const Dashboard = () => {
     serialNumber: "",
   });
   const [reader, setReader] = useState();
-  console.log(reader);
 
   const getReader = async () => {
     try {
@@ -29,7 +28,7 @@ const Dashboard = () => {
       let res = await response.json();
       setReader(res.data);
     } catch (err) {
-      console.log(err.message);
+      alert(err.message);
     }
   };
 
@@ -49,7 +48,8 @@ const Dashboard = () => {
         body: JSON.stringify(state),
       }
     );
-    await response.json();
+    const res = await response.json();
+    alert(res.status);
     setReader([
       ...reader,
       {

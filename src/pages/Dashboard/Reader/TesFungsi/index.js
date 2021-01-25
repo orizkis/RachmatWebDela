@@ -225,12 +225,29 @@ const TesFungsi = ({ title }) => {
       let res = await response.json();
       setState(res.data);
     } catch (err) {
-      console.log(err.message);
+      alert(err.message);
     }
   };
 
-  const handleClick = () => {
-    console.log(form);
+  const handleClick = async () => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_URL + "/api/data/test",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            data: form,
+          }),
+        }
+      );
+      let res = await response.json();
+      alert(res.status);
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   useEffect(() => {

@@ -45,7 +45,7 @@ const Kelengkapan = ({ title, idReader }) => {
       let res = await response.json();
       setState(res.data);
     } catch (err) {
-      console.log(err.message);
+      alert(err.message);
     }
   };
 
@@ -56,7 +56,6 @@ const Kelengkapan = ({ title, idReader }) => {
   const handleChange = (event) => {
     let data = state.map((row) => {
       if (row.id_barang === Number(event.target.name)) {
-        console.log("id_barang ->", row.id_barang);
         return {
           ...row,
           [event.target.type === "textarea" ? "keterangan" : "jumlah"]: event
@@ -69,7 +68,6 @@ const Kelengkapan = ({ title, idReader }) => {
   };
 
   const handleClick = async (idReader) => {
-    console.log(state);
     try {
       const response = await fetch(
         process.env.REACT_APP_URL + "/api/data/kelengkapan",
@@ -91,9 +89,9 @@ const Kelengkapan = ({ title, idReader }) => {
         }
       );
       let res = await response.json();
-      console.log(res);
+      alert(res.status);
     } catch (err) {
-      console.log(err.message);
+      alert(err.message);
     }
   };
 
