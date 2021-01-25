@@ -1,4 +1,4 @@
-let a = [
+let sand = [
   {
     id_test: "1",
     nama_test: "Pengecekan Short-Circuit Wiring Kabel DC",
@@ -448,19 +448,3 @@ let a = [
     created_at: "2021-01-21T04:42:01.000Z",
   },
 ];
-
-let data = [];
-
-a.forEach((row) => {
-  if (!row.id_parent_fungsi1 && !row.id_parent_fungsi2) {
-    data.push({ ...row, children: [] });
-  } else {
-    data.forEach((row2) => {
-      if (row2.id_test === row.id_parent_fungsi1 && !row.id_parent_fungsi2) {
-        row2.children.push(row);
-      }
-    });
-  }
-});
-
-console.log(data[2]);

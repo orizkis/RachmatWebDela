@@ -31,18 +31,6 @@ const MainApp = () => {
             <PrivateRoute path="/" exact>
               <Dashboard />
             </PrivateRoute>
-            {/* <PrivateRoute path="/supplier">
-              <Supplier />
-            </PrivateRoute>
-            <PrivateRoute path="/customers">
-              <Customers />
-            </PrivateRoute>
-            <PrivateRoute path="/pembelian">
-              <Pembelian />
-            </PrivateRoute>
-            <PrivateRoute path="/penjualan">
-              <Penjualan />
-            </PrivateRoute> */}
           </Switch>
         </Layout>
       </Router>

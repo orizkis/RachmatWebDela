@@ -15,16 +15,14 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   ChevronLeft,
   ChevronRight,
+  EventNote,
   Home,
-  LocalMall,
+  ListAlt,
   Menu,
-  PeopleAlt,
-  ShoppingCart,
-  Storefront,
 } from "@material-ui/icons";
 import clsx from "clsx";
 import React from "react";
-import { NavLink, useLocation, useHistory } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -90,6 +88,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  navlink: {
+    textDecoration: "none",
+    color: theme.palette.text.primary,
+  },
 }));
 
 function Layout(props) {
@@ -128,7 +130,7 @@ function Layout(props) {
             <Menu />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Mini variant drawer
+            {location.pathname === "/" ? "Reader" : "set dlu cuy"}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -154,7 +156,7 @@ function Layout(props) {
         <List>
           {dataMenu.map((row, index) => {
             return (
-              <NavLink to={row.path} key={index}>
+              <NavLink to={row.path} key={index} className={classes.navlink}>
                 <ListItem
                   button
                   key={index}
