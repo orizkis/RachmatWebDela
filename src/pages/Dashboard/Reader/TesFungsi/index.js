@@ -1,4 +1,4 @@
-import { Radio, TextareaAutosize, Typography } from "@material-ui/core";
+import { Radio, TextareaAutosize, Typography, Button } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -229,6 +229,10 @@ const TesFungsi = ({ title }) => {
     }
   };
 
+  const handleClick = () => {
+    console.log(form);
+  };
+
   useEffect(() => {
     if (state) {
       let data = state.map((row) => {
@@ -260,7 +264,7 @@ const TesFungsi = ({ title }) => {
           >
             <Gap height={40} />
             <Typography variant="h6" gutterBottom component="div">
-              Tes Fungsi ({title})
+              Add Tes Fungsi ({title})
             </Typography>
             <Gap height={20} />
             <TableContainer component={Paper}>
@@ -279,11 +283,22 @@ const TesFungsi = ({ title }) => {
                       key={row.name}
                       row={row}
                       handleChange={handleChange}
+                      handleClick={handleClick}
                     />
                   ))}
                 </TableBody>
               </Table>
             </TableContainer>
+            <Gap height={10} />
+            <Button
+              onClick={handleClick}
+              variant="contained"
+              color="secondary"
+              style={{ alignSelf: "flex-end" }}
+            >
+              Add
+            </Button>
+            <Gap height={10} />
           </div>
         </TableCell>
       </TableRow>

@@ -3,7 +3,6 @@ import { Grid, Paper, TextField, Button, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Reader from "./Reader";
 import { Gap } from "../../components";
-import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,12 +45,11 @@ const Dashboard = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify(state),
       }
     );
-    const res = await response.json();
+    await response.json();
     setReader([
       ...reader,
       {
@@ -118,7 +116,7 @@ const Dashboard = () => {
                   md={4}
                   style={{ display: "flex", alignItems: "center" }}
                 >
-                  <Button type="submit" variant="contained" color="primary">
+                  <Button type="submit" variant="contained" color="secondary">
                     Add
                   </Button>
                 </Grid>

@@ -4,6 +4,7 @@ import {
   InputAdornment,
   CircularProgress,
   Typography,
+  Button,
 } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Kelengkapan = ({ title }) => {
+const Kelengkapan = ({ title, idReader }) => {
   const classes = useStyles();
   const [state, setState] = React.useState([]);
 
@@ -67,6 +68,35 @@ const Kelengkapan = ({ title }) => {
     setState(data);
   };
 
+  const handleClick = async (idReader) => {
+    console.log(state);
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_URL + "/api/data/kelengkapan",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            data: state.map((row) => {
+              return {
+                idReader,
+                idBarang: row.id_barang,
+                jumlah: row.jumlah,
+                keterangan: row.keterangan,
+              };
+            }),
+          }),
+        }
+      );
+      let res = await response.json();
+      console.log(res);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <TableRow>
       <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -79,7 +109,7 @@ const Kelengkapan = ({ title }) => {
         >
           <Gap height={40} />
           <Typography variant="h6" gutterBottom component="div">
-            Kelengkapan ({title})
+            Add Kelengkapan ({title})
           </Typography>
           <Gap height={20} />
           <div
@@ -153,6 +183,16 @@ const Kelengkapan = ({ title }) => {
               </Table>
             </TableContainer>
           </div>
+          <Gap height={10} />
+          <Button
+            onClick={() => handleClick(idReader)}
+            variant="contained"
+            color="secondary"
+            style={{ alignSelf: "flex-end" }}
+          >
+            Add
+          </Button>
+          <Gap height={10} />
         </div>
       </TableCell>
     </TableRow>

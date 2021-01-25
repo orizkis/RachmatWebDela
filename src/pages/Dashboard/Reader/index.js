@@ -57,7 +57,9 @@ const Row = ({ data }) => {
           </IconButton>
         </TableCell>
       </TableRow>
-      {kelengkapan && <Kelengkapan title={data.nama_alat} />}
+      {kelengkapan && (
+        <Kelengkapan title={data.nama_alat} idReader={data.id_reader} />
+      )}
       {tesFungsi && <TesFungsi title={data.nama_alat} />}
     </>
   );
