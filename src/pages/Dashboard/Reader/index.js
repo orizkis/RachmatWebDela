@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import moment from "moment";
+import IconButton from "@material-ui/core/IconButton";
+import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,17 +7,15 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import { Box, Typography } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import { Delete, KeyboardArrowUp, KeyboardArrowDown } from "@material-ui/icons";
-import Kelengkapan from "../Kelengkapan";
-import TesFungsi from "../TesFungsi";
-import { Gap } from "../../../components";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
+import moment from "moment";
+import React, { useState } from "react";
+import Kelengkapan from "./Kelengkapan";
+import TesFungsi from "./TesFungsi";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 500,
   },
 });
 
@@ -65,32 +63,16 @@ const Row = ({ data }) => {
   );
 };
 
-const Reader = () => {
+const Reader = ({ data }) => {
   const classes = useStyles();
   const [state, setState] = useState();
-
-  const getData = async () => {
-    try {
-      const response = await fetch(
-        process.env.REACT_APP_URL + "/api/data/reader"
-      );
-      let res = await response.json();
-      setState(res.data);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Nama</TableCell>
+            <TableCell>Nama Alat</TableCell>
             <TableCell align="right">Tipe</TableCell>
             <TableCell align="right">Serial Number</TableCell>
             <TableCell align="right">Created at</TableCell>
@@ -98,7 +80,7 @@ const Reader = () => {
             <TableCell align="right">Tes Fungsi</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>{state && state.map((row) => <Row data={row} />)}</TableBody>
+        <TableBody>{data && data.map((row) => <Row data={row} />)}</TableBody>
       </Table>
     </TableContainer>
   );

@@ -11,7 +11,7 @@ import TableRow from "@material-ui/core/TableRow";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import React, { useState, useEffect } from "react";
-import { Gap } from "../../../components";
+import { Gap } from "../../../../components";
 
 const useRowStyles = makeStyles({
   root: {
@@ -88,7 +88,7 @@ const SecondRow = ({ row, handleChange }) => {
           <TextareaAutosize
             aria-label="empty textarea"
             placeholder="Empty"
-            style={{ width: 250 }}
+            style={{ minWidth: 150 }}
             rowsMin={2}
             onChange={handleChange}
             value={row.keterangan}
@@ -148,7 +148,7 @@ const ThirdRow = ({ row, handleChange }) => {
           <TextareaAutosize
             aria-label="empty textarea"
             placeholder="Empty"
-            style={{ width: 250 }}
+            style={{ minWidth: 150 }}
             rowsMin={2}
             onChange={handleChange}
             value={row.keterangan}
@@ -186,7 +186,7 @@ const ThirdRow = ({ row, handleChange }) => {
               <TextareaAutosize
                 aria-label="empty textarea"
                 placeholder="Empty"
-                style={{ width: 250 }}
+                style={{ minWidth: 150 }}
                 rowsMin={2}
                 onChange={handleChange}
                 value={data.keterangan}
@@ -264,7 +264,7 @@ const TesFungsi = ({ title }) => {
             </Typography>
             <Gap height={20} />
             <TableContainer component={Paper}>
-              <Table aria-label="collapsible table">
+              <Table style={{ minWidth: 500 }} aria-label="collapsible table">
                 <TableHead>
                   <TableRow>
                     <TableCell />

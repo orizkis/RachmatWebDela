@@ -16,7 +16,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import clsx from "clsx";
 import React, { useEffect } from "react";
-import { Gap } from "../../../components";
+import { Gap } from "../../../../components";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   table: {
-    minWidth: 650,
+    minWidth: 500,
   },
   textField: {
     width: "10ch",
@@ -140,7 +140,7 @@ const Kelengkapan = ({ title }) => {
                         <TextareaAutosize
                           aria-label="empty textarea"
                           placeholder="Empty"
-                          style={{ width: 250 }}
+                          style={{ minWidth: 150 }}
                           rowsMin={2}
                           name={row.id_barang}
                           value={row.keterangan}
