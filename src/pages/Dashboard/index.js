@@ -49,12 +49,13 @@ const Dashboard = () => {
       }
     );
     const res = await response.json();
+    console.log(res);
     alert(res.status);
     setReader([
       ...reader,
       {
         created_at: Date.now(),
-        id_reader: "pending",
+        id_reader: res.data.id_reader,
         jenis_or_type: state.jenis,
         nama_alat: state.namaAlat,
         serial_number_reader: state.serialNumber,
