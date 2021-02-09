@@ -2,6 +2,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
+import Dialog from '@material-ui/core/Dialog';
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
@@ -57,9 +58,15 @@ const Row = ({ data }) => {
           </IconButton>
         </TableCell>
       </TableRow>
-      {kelengkapan && (
+      {/* Edit Disini */}
+      {/* {kelengkapan && (
         <Kelengkapan title={data.nama_alat} idReader={data.id_reader} />
-      )}
+      )} */}
+       <SimpleDialog title={data.nama_alat} idReader={data.id_reader} open={open.kelengkapan} onClose={()=> { 
+         setOpen({
+                ...open,
+                kelengkapan:false,
+              })}} />
       {tesFungsi && <TesFungsi title={data.nama_alat} />}
     </>
   );
@@ -86,5 +93,13 @@ const Reader = ({ data }) => {
     </TableContainer>
   );
 };
+
+function SimpleDialog({idReader, title, open, onClose}) {
+  return (
+    <Dialog onClose={onClose} aria-labelledby="simple-dialog-title" open={open}>
+      <Kelengkapan title={title} idReader={idReader} />
+    </Dialog>
+  );
+}
 
 export default Reader;

@@ -23,7 +23,12 @@ const Dashboard = () => {
   const getReader = async () => {
     try {
       const response = await fetch(
-        process.env.REACT_APP_URL + "/api/data/reader"
+        process.env.REACT_APP_URL + "/api/data/reader", {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authentication': localStorage.getItem('token'),
+          },
+        }
       );
       let res = await response.json();
       setReader(res.data);
@@ -44,6 +49,7 @@ const Dashboard = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authentication": localStorage.getItem("token"),
         },
         body: JSON.stringify(state),
       }
