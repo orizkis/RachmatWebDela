@@ -43,7 +43,7 @@ const Kelengkapan = ({ title, idReader }) => {
         process.env.REACT_APP_URL + "/api/data/component"
       );
       let res = await response.json();
-      setState(res.data);
+      setState(res.barang);
     } catch (err) {
       alert(err.message);
     }

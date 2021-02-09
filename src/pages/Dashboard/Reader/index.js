@@ -58,16 +58,20 @@ const Row = ({ data }) => {
           </IconButton>
         </TableCell>
       </TableRow>
-      {/* Edit Disini */}
       {/* {kelengkapan && (
         <Kelengkapan title={data.nama_alat} idReader={data.id_reader} />
       )} */}
-       <SimpleDialog title={data.nama_alat} idReader={data.id_reader} open={open.kelengkapan} onClose={()=> { 
+       <DialogKelengkapan title={data.nama_alat} idReader={data.id_reader} open={open.kelengkapan} onClose={()=> { 
          setOpen({
                 ...open,
                 kelengkapan:false,
               })}} />
-      {tesFungsi && <TesFungsi title={data.nama_alat} />}
+      {/* {tesFungsi && <TesFungsi title={data.nama_alat} />} */}
+      <DialogTesFungsi title={data.nama_alat}  open={open.tesFungsi} onClose={()=> { 
+         setOpen({
+                ...open,
+                tesFungsi:false,
+              })}} />
     </>
   );
 };
@@ -94,10 +98,18 @@ const Reader = ({ data }) => {
   );
 };
 
-function SimpleDialog({idReader, title, open, onClose}) {
+function DialogKelengkapan({idReader, title, open, onClose}) {
   return (
     <Dialog onClose={onClose} aria-labelledby="simple-dialog-title" open={open}>
       <Kelengkapan title={title} idReader={idReader} />
+    </Dialog>
+  );
+}
+
+function DialogTesFungsi({title, open, onClose}) {
+  return (
+    <Dialog onClose={onClose} aria-labelledby="simple-dialog-title" open={open}>
+      <TesFungsi title={title} />
     </Dialog>
   );
 }
